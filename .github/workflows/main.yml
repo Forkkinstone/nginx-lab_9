@@ -1,0 +1,29 @@
+name: Lab 9 CI
+
+on:
+  push:
+    branches: [ main, master ] # Сработает при пуше в эти ветки
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Start containers
+        run: docker-compose up -d --build
+
+      - name: Install Dependencies
+        run: docker exec lab9_php composer install
+
+      - name: Run Tests
+        run: docker exec lab9_php ./vendor/bin/phpunit tests
+
+      - name: Stop containers
+        if: always()
+        run: docker-compose down
