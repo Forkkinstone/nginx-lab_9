@@ -15,14 +15,14 @@ jobs:
       - name: Start containers
         run: docker compose up -d --build
 
+      - name: Wait for services
+        run: sleep 10
+
       - name: Install Dependencies
         run: docker exec lab9_php composer install
 
-      - name: Give execution rights to phpunit
-        run: docker exec lab9_php chmod +x vendor/bin/phpunit
-
       - name: Run Tests
-        run: docker exec lab9_php ./vendor/bin/phpunit tests
+        run: docker exec lab9_php php ./vendor/bin/phpunit tests
 
       - name: Stop containers
         if: always()
