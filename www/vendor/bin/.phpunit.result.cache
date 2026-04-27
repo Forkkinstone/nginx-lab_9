@@ -1,0 +1,1 @@
+{"version":1,"defects":{"QueueManagerTest::testIsQueueManagerCanBeCreated":4,"QueueManagerTest::testAddWithMock":4,"QueueManagerTest::testPublishWithMock":4},"times":{"QueueManagerTest::testIsQueueManagerCanBeCreated":0.609,"QueueManagerTest::testAddWithMock":0.177,"QueueManagerTest::testPublishWithMock":0.236,"HttpTest::testIndexPageIsAvailable":1.019}}
